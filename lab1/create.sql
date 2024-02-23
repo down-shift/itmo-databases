@@ -3,8 +3,7 @@
 CREATE TABLE IF NOT EXISTS Person (
     person_id SERIAL PRIMARY KEY,
     name VARCHAR(69) NOT NULL,
-    house_id INT 
-        FOREIGN KEY REFERENCES Building(building_id), -- CHECK
+    house_id INT NOT NULL, 
     age INT NOT NULL,
     gender FLOAT4 NOT NULL
 );
@@ -13,8 +12,9 @@ CREATE TABLE IF NOT EXISTS Item (
     item_id SERIAL PRIMARY KEY,
     name VARCHAR(69) NOT NULL,
     function VARCHAR(255) NOT NULL,
-    owner_id INT NOT NULL 
-        UNIQUE FOREIGN KEY REFERENCES Person(person_id),
+    owner_id INT NOT NULL,
+    UNIQUE(owner_id),
+    FOREIGN KEY(owner_id) REFERENCES Person(person_id),
     is_part_of_heritage BOOLEAN NOT NULL
 );
 
@@ -29,15 +29,15 @@ CREATE TABLE IF NOT EXISTS Building (
     building_id SERIAL PRIMARY KEY,
     name VARCHAR(69) NOT NULL,
     occupant VARCHAR(69) NOT NULL,
-    location_id INT NOT NULL
-        FOREIGN KEY REFERENCES Location(location_id)
+    location_id INT NOT NULL,
+    FOREIGN KEY(location_id) REFERENCES Location(location_id)
 );
 
 CREATE TABLE IF NOT EXISTS Infrastructure (
     infrastructure_id SERIAL PRIMARY KEY,
     name VARCHAR(69) NOT NULL,
-    location_id INT NOT NULL
-        FOREIGN KEY REFERENCES Location(location_id),
+    location_id INT NOT NULL,
+    FOREIGN KEY(location_id) REFERENCES Location(location_id),
     height INT NOT NULL
 );
 
@@ -50,10 +50,10 @@ CREATE TABLE IF NOT EXISTS Vehicle (
 
 CREATE TABLE IF NOT EXISTS VehicleUsage (
     usage_id SERIAL PRIMARY KEY,
-    person_id INT NOT NULL
-        FOREIGN KEY REFERENCES Person(person_id),
-    vehicle_id INT NOT NULL
-        FOREIGN KEY REFERENCES Vehicle(vehicle_id),
+    person_id INT NOT NULL,
+    FOREIGN KEY(person_id) REFERENCES Person(person_id),
+    vehicle_id INT NOT NULL,
+    FOREIGN KEY(vehicle_id) REFERENCES Vehicle(vehicle_id),
     UNIQUE (person_id, vehicle_id),
     timestamp TIME NOT NULL
 );

@@ -67,10 +67,10 @@ INSERT INTO Person (name, house_id, age, gender) VALUES
     ('Maxwell', 4, 3, -2.1);
 
 INSERT INTO Item (name, function, owner_id, is_part_of_heritage) VALUES
-    ('flashlight', 'enlighten the surroundings', 1, 1),
-    ('keychain', 'carefully store finely picked keys', 2, 0),
-    ('Sergey', 'no specific purpose', 4, 0),
-    ('heart', 'be brave', 3, 1);
+    ('flashlight', 'enlighten the surroundings', 1, TRUE),
+    ('keychain', 'carefully store finely picked keys', 2, FALSE),
+    ('Sergey', 'no specific purpose', 4, FALSE),
+    ('heart', 'be brave', 3, TRUE);
 
 INSERT INTO Location (name, description, coords) VALUES
     ('Florida plane', 'Florida plane', POINT(44.3340, 38.0437)),
@@ -94,8 +94,8 @@ INSERT INTO Vehicle (name, speed, owner) VALUES
     ('car', 111.0, 'Dr Floyd');
 
 INSERT INTO VehicleUsage (person_id, vehicle_id, timestamp) VALUES
-    (1, 2, 04:05:06),
-    (1, 1, 08:05:00),
-    (2, 3, 23:45:11),
-    (3, 3, 16:02:24),
-    (4, 1, 24:02:22);
+    (1, 2, '04:05:06'),
+    (1, 1, '08:05:00'),
+    (2, 3, '23:45:11'),
+    (3, 3, '16:02:24'),
+    (4, 1, '24:02:22');

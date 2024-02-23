@@ -98,4 +98,4 @@ INSERT INTO VehicleUsage (person_id, vehicle_id, timestamp) VALUES
     (1, 1, '08:05:00'),
     (2, 3, '23:45:11'),
     (3, 3, '16:02:24'),
-    (4, 1, '24:02:22');
+    (4, 1, '00:02:22');
